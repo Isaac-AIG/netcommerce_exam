@@ -12,13 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->id(); // Llave primaria de usuario
+            $table->string('name', 50); // Nombre del usuario
+            $table->string('email', 50)->unique(); // Correo electrónico único
+            $table->enum('role', ['Jr Dev', 'Mid Dev', 'Sr Dev', 'PM', 'Analyst', 'Manager', 'CEO']); // Rol del usuario (Desarrollador Jr, Desarrollador Mid, Desarrollador Sr, Project Manager, Analista, Manager o CEO)
+            $table->timestamps(); // Fecha y hora en la que fue creado y actualizado
         });
     }
 

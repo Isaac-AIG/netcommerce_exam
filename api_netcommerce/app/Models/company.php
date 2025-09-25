@@ -4,12 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class company extends Model
+
+class Company extends Model
 {
     use HasFactory;
-    public function tasks()
+
+    protected $fillable = [
+        'name',
+        'address',
+        'project',
+    ];
+
+    public function tasks(): HasMany
     {
-        return $this->hasMany('App\Models\Task'); //Relación uno a muchos con Task
+        return $this->hasMany(Task::class); // Relation one to many with Task
     }   
 }

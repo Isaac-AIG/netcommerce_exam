@@ -4,12 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Enums\RolesEnum;
 
-class user extends Model
+class User extends Model
 {
     use HasFactory;
-    public function tasks()
+
+    protected $fillable = [
+        'name',
+        'email',
+        'role',
+    ];
+
+    protected $casts = [
+        'role'=>RolesEnum::class
+    ];
+
+    public function tasks(): HasMany
     {
-        return $this->hasMany('App\Models\Task'); //Relación uno a muchos con Task
+        return $this->hasMany(Task::class); // Relation one to many with Task
     }
 }

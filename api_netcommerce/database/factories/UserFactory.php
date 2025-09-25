@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\RolesEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\User;
 
@@ -23,7 +24,7 @@ class userFactory extends Factory
         return [
             'name' => $this->faker->name,
             'email' => $this->faker->unique()->safeEmail,
-            'role' => $this->faker->randomElement(['Jr Dev', 'Mid Dev', 'Sr Dev', 'PM', 'Analyst', 'Manager', 'CEO']),
+            'role' => $this->faker->randomElement(RolesEnum::cases()),
         ];
     }
 }

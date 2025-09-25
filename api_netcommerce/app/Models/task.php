@@ -2,20 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use App\Enums\StatusEnum;
+use Illuminate\Database\Eloquent\Factories\HasFactory; // For using model factories
+use Illuminate\Database\Eloquent\Model; // Base model class
+use Illuminate\Database\Eloquent\Relations\BelongsTo; // For many-to-one relationship
+use App\Enums\StatusEnum; // Enum for task status
 
 
 class Task extends Model
 {
-    use HasFactory;
+    use HasFactory; // Trait to enable factory methods
 
-    protected $table = 'tasks';
-    protected $connection = 'mysql';
+    protected $table = 'tasks'; // Specify the table name
+    protected $connection = 'mysql'; // Specify the database connection
 
-    protected $fillable = [
+    protected $fillable = [ // Mass assignable attributes
         'task',
         'description',
         'status',
@@ -26,7 +26,7 @@ class Task extends Model
     ];
 
     protected $casts = [
-        'status'=>StatusEnum::class
+        'status'=>StatusEnum::class // Cast status to StatusEnum
     ];
 
     public function user(): BelongsTo

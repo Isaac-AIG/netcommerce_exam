@@ -1,5 +1,6 @@
 <?php
-namespace App\Http\Requests;
+namespace App\Http\Request;
+
 
 use App\Rules\MaxPendingTasks;
 use Illuminate\Foundation\Http\FormRequest;

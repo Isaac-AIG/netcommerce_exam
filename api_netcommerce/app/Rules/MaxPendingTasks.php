@@ -14,7 +14,7 @@ class MaxPendingTasks implements ValidationRule
     public function validate(String $attribute, mixed $value, Closure $fail): void
     {
         $pendingTasksCount = Task::where('user_id', $value)
-            ->where('is_completed', StatusEnum::PENDING->value)
+            ->where('status', StatusEnum::PENDING->value)
             ->count();
 
         if ($pendingTasksCount >= $this->maxTasks) {

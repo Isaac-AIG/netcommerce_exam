@@ -16,8 +16,8 @@ return new class extends Migration
             $table->id(); // Primary key
             $table->string('task'); // Title of the task
             $table->text('description'); // Description of the task
-            $table->timestamp('start_date'); // Start date of the task
-            $table->timestamp('due_date'); // Due date of the task
+            $table->timestamp('start_date')->nullable(); // Start date of the task
+            $table->timestamp('due_date')->nullable(); // Due date of the task
             $table->enum('status', array_column(StatusEnum::cases(), 'value'))->default(StatusEnum::PENDING); //Status of the task
             $table->timestamps(); // Date of creation and update
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade'); // Foreign key of the users table

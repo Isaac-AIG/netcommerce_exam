@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\StatusEnum;
-use App\Enums\TaskStatus;
-use App\Http\Requests\StoreTaskRequest;
+use App\Http\Request\StoreTaskRequest;
 use App\Models\Task;
 use Illuminate\Http\JsonResponse;
 use Exception;
@@ -33,7 +32,7 @@ class TaskController extends Controller
         }
             return response()->json([
                 'id' => $task->id,
-                'name' => $task->name,
+                'task' => $task->task,
                 'description' => $task->description,
                 'user' => $task->user->name,
                 'company' => [

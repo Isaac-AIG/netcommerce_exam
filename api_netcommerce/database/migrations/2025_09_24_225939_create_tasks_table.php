@@ -13,15 +13,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tasks', function (Blueprint $table) {
-            $table->id(); // Primary key
-            $table->string('task'); // Title of the task
-            $table->text('description'); // Description of the task
-            $table->timestamp('start_date')->nullable(); // Start date of the task
-            $table->timestamp('due_date')->nullable(); // Due date of the task
-            $table->enum('status', array_column(StatusEnum::cases(), 'value'))->default(StatusEnum::PENDING); //Status of the task
-            $table->timestamps(); // Date of creation and update
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade'); // Foreign key of the users table
-            $table->foreignId('company_id')->constrained('companies')->onDelete('cascade')->onUpdate('cascade'); // Foreign key of the companies table
+            $table->id();
+            $table->string('task'); 
+            $table->text('description'); 
+            $table->timestamp('start_date')->nullable(); 
+            $table->timestamp('due_date')->nullable(); 
+            $table->enum('status', array_column(StatusEnum::cases(), 'value'))->default(StatusEnum::PENDING); 
+            $table->timestamps(); 
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade'); 
+            $table->foreignId('company_id')->constrained('companies')->onDelete('cascade')->onUpdate('cascade'); 
         });
     }
 

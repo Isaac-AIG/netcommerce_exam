@@ -10,6 +10,12 @@ use Exception;
 
 class TaskController extends Controller
 {
+    /**
+     * Create a new task.
+     *
+     * @param StoreTaskRequest $request
+     * @return JsonResponse
+     */
     public function create(StoreTaskRequest $request): JsonResponse
     {
         try {

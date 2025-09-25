@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('companies', function (Blueprint $table) {
-            $table->id(); // Primary key of the table
-            $table->string('name', 100); // Company name
-            $table->string('address', 100); // Company address
-            $table->timestamps(); // Date and time of creation and last update
+            $table->id(); 
+            $table->string('name', 100);
+            $table->string('address', 100); 
+            $table->timestamps(); 
         });
     }
 

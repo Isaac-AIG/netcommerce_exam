@@ -2,25 +2,49 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory; // For using model factories
-use Illuminate\Database\Eloquent\Model; // Base model class
-use Illuminate\Database\Eloquent\Relations\HasMany; // For one-to-many relationship
+use Illuminate\Database\Eloquent\Factories\HasFactory; 
+use Illuminate\Database\Eloquent\Model; 
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-
+/**
+ * Company Model
+ * 
+ * Model of the companies table.
+ * 
+ * @property int $id
+ * @property string $name
+ * @property string $address
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * 
+ */
 class Company extends Model
 {
-    use HasFactory; // Trait to enable factory methods
+    use HasFactory;
 
-    protected $table = 'companies'; // Specify the table name
-    protected $connection = 'mysql'; // Specify the database connection
+    /**
+     * The companies table associated with the model.
+     */
+    protected $table = 'companies'; 
 
-    protected $fillable = [ // Mass assignable attributes
+    /**
+     * The database connection used by the model.
+     */
+    protected $connection = 'mysql'; 
+
+    /**
+     * @var array
+     */
+    protected $fillable = [
         'name',
         'address',
     ];
 
+    /**
+     * Get the tasks for the company.
+     */
     public function tasks(): HasMany
     {
-        return $this->hasMany(Task::class); // Relation one to many with Task
+        return $this->hasMany(Task::class);
     }   
 }

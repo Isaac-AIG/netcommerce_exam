@@ -7,15 +7,42 @@ use Illuminate\Database\Eloquent\Model; // Base model class
 use Illuminate\Database\Eloquent\Relations\BelongsTo; // For many-to-one relationship
 use App\Enums\StatusEnum; // Enum for task status
 
-
+/**
+ * Task Model
+ * 
+ * Model of the tasks table.
+ * 
+ * @property int $id
+ * @property string $task
+ * @property string|null $description
+ * @property StatusEnum $status
+ * @property \Illuminate\Support\Carbon|null $start_date
+ * @property \Illuminate\Support\Carbon|null $due_date
+ * @property int $user_id
+ * @property int $company_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * 
+ */
 class Task extends Model
 {
-    use HasFactory; // Trait to enable factory methods
+    use HasFactory;
 
-    protected $table = 'tasks'; // Specify the table name
-    protected $connection = 'mysql'; // Specify the database connection
+    /**
+     * The tasks table associated with the model.
+     */
+    protected $table = 'tasks'; 
 
-    protected $fillable = [ // Mass assignable attributes
+    /**
+     * The database connection used by the model.
+     */
+    protected $connection = 'mysql'; 
+
+    /**
+     * @var array
+     */
+    protected $fillable = [ 
+        
         'task',
         'description',
         'status',
@@ -25,17 +52,28 @@ class Task extends Model
         'company_id'
     ];
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
     protected $casts = [
-        'status'=>StatusEnum::class // Cast status to StatusEnum
+        'status'=>StatusEnum::class
     ];
 
+    /**
+     * Get the user that owns the task.
+     */
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class); // Relation many to one with User
+        return $this->belongsTo(User::class);
     }
 
+    /**
+     * Get the company that owns the task.
+     */
     public function company(): BelongsTo
     {
-        return $this->belongsTo(Company::class); // Relation many to one with Company
+        return $this->belongsTo(Company::class); 
     }
 }

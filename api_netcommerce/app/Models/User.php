@@ -2,30 +2,61 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory; // For using model factories
-use Illuminate\Database\Eloquent\Model; // Base model class
-use Illuminate\Database\Eloquent\Relations\HasMany; // For one-to-many relationship
-use App\Enums\RolesEnum; // Enum for user roles
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model; 
+use Illuminate\Database\Eloquent\Relations\HasMany; 
+use App\Enums\RolesEnum;
 
+/**
+ * User Model
+ * 
+ * Model of the users table.
+ * 
+ * @property int $id
+ * @property string $name
+ * @property string $email
+ * @property RolesEnum $role
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * 
+ */
 class User extends Model
 {
-    use HasFactory; // Trait to enable factory methods
+    use HasFactory; 
 
-    protected $table = 'users'; // Specify the table name
-    protected $connection = 'mysql'; // Specify the database connection
+    /**
+     * The users table associated with the model.
+     */
+    protected $table = 'users'; 
 
-    protected $fillable = [ // Mass assignable attributes
+    /**
+     * The database connection used by the model.
+     */
+    protected $connection = 'mysql'; 
+
+    /**
+     * @var array
+     */
+    protected $fillable = [ 
         'name',
         'email',
         'role',
     ];
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
     protected $casts = [
-        'role'=>RolesEnum::class // Cast role to RolesEnum
+        'role'=>RolesEnum::class 
     ];
 
+    /**
+     * Get the tasks for the user.
+     */
     public function tasks(): HasMany
     {
-        return $this->hasMany(Task::class); // Relation one to many with Task
+        return $this->hasMany(Task::class); 
     }
 }

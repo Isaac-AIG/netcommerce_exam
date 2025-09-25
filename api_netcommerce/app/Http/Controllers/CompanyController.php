@@ -8,6 +8,12 @@ use Exception;
 
 class CompanyController extends Controller
 {
+    /**
+     * Display a listing of the companies with their tasks and associated users.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function index(Request $request)
     {
         try {

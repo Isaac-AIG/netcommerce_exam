@@ -17,7 +17,6 @@ class companySeeder extends Seeder
         Company::create([
             'name' => 'NetCommerce',
             'address' => 'Av. 16 de Septiembre 730- Col. Guadalajara Centro, Piso 24, del Condominio, 44100 Guadalajara, Jal.',
-            'project' => 'API NetCommerce'
         ]);
         
         Company::factory(10)->create();

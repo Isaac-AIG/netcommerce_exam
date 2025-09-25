@@ -25,6 +25,7 @@ class taskFactory extends Factory
             'task' => $this->faker->sentence,
             'description' => $this->faker->paragraph,
             'status' => $this->faker->randomElement(StatusEnum::cases()),
+            'start_date' => $this->faker->dateTimeBetween('-1 month', 'now'),
             'due_date' => $this->faker->dateTimeBetween('now', '+1 year'),
             'user_id' => \App\Models\User::inRandomOrder()->first()->id,
             'company_id' => \App\Models\Company::inRandomOrder()->first()->id,

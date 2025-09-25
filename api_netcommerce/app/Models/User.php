@@ -11,6 +11,9 @@ class User extends Model
 {
     use HasFactory;
 
+    protected $table = 'users';
+    protected $connection = 'mysql';
+
     protected $fillable = [
         'name',
         'email',

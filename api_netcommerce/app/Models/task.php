@@ -12,10 +12,14 @@ class Task extends Model
 {
     use HasFactory;
 
+    protected $table = 'tasks';
+    protected $connection = 'mysql';
+
     protected $fillable = [
         'task',
         'description',
         'status',
+        'start_date',
         'due_date',
         'user_id',
         'company_id'

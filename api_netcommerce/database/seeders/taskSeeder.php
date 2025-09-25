@@ -14,12 +14,13 @@ class taskSeeder extends Seeder
     public function run(): void
     {
         Task::create([
-            'task' => 'Examen Práctico',
-            'description' => 'Desarrollar una aplicación tipo API, en donde se apliquen todos los conocimientos posibles  acerca del framework Laravel 10.x y versiones anteriores. Esta API no requiere de autenticación  para los distintos endpoints, se requiere consumir listados de tareas relacionados a usuarios y  empresas',
-            'due_date' => now()->addDays(30), // Fecha de vencimiento en 30 días
-            'status' => StatusEnum::PENDING, // Estado inicial de la tarea
-            'user_id' => 1, // Asignar la tarea al usuario con ID 1
-            'company_id' => 1, // Asignar la tarea a la empresa con ID 1
+            'task' => 'Examen Práctico', // Title of the task
+            'description' => 'Desarrollar una aplicación tipo API, en donde se apliquen todos los conocimientos posibles  acerca del framework Laravel 10.x y versiones anteriores. Esta API no requiere de autenticación  para los distintos endpoints, se requiere consumir listados de tareas relacionados a usuarios y  empresas', // Description of the task
+            'start_date' => now(), // Start date of the task
+            'due_date' => now()->addDays(30), // Due date of the task (30 days from now)
+            'status' => StatusEnum::PENDING, // Initial status of the task
+            'user_id' => 1, // Assign the task to the user with ID 1
+            'company_id' => 1, // Assign the task to the company with ID 1
         ]);
         Task::factory(40)->create();
     }

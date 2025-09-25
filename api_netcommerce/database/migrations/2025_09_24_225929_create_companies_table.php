@@ -12,11 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('companies', function (Blueprint $table) {
-            $table->id(); // Llave primaria de la compañía
-            $table->string('name', 100); // Nombre de la compañía
-            $table->string('address', 100); // Dirección de la compañía
-            $table->string('project', 50); // Proyecto de trabajo de la compañía
-            $table->timestamps(); // Fecha y hora en la que fue creado y actualizado
+            $table->id(); // Primary key of the table
+            $table->string('name', 100); // Company name
+            $table->string('address', 100); // Company address
+            $table->timestamps(); // Date and time of creation and last update
         });
     }
 
